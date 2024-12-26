@@ -30,7 +30,7 @@ const MapComponent = () => {
   return (
     <div
       id="map"
-      style={{ height: "500px", width: "100%", margin: "20px auto" }}
+      style={{ height: "600px", width: "100%", margin: "20px auto" }}
     ></div>
   );
 };

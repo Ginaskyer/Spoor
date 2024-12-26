@@ -1,38 +1,75 @@
-.App {
-  text-align: center;
+/* General Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.app {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.navbar {
+  top: 0;
+  position: fixed;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(102, 153, 104, 0.8), rgba(185, 204, 187, 0.8));
   color: white;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(10px);
 }
 
-.App-link {
-  color: #61dafb;
+.navbar .title h1 {
+  margin: 0;
+  font-size: 200px;
+  font-weight: 600;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.navbar nav a{
+  margin: 0;
+  font-size: 40px;
+  font-weight: 600;
+  text-decoration: none;
+  color: white; /* 设置字体颜色为白色 */
 }
+
+.navbar nav a:hover {
+  color: #c8dfe6;
+}
+
+.navbar nav span {
+  color: white;
+  font-size: 20px; /* 设置竖线的字体大小 */
+  padding: 0 10px;
+}
+
+/* 确保地图区域显示在navbar下方 */
+.map-section {
+  flex: 1;
+  position: relative;
+  margin-top: 300px; /* 调整为与navbar的高度匹配，避免遮挡 */
+  padding-top: 20px; /* 可以增加一些内边距来确保地图内容不与边界紧贴 */
+}
+
+.map-section #map-container {
+  width: 100%;
+  height: calc(100vh - 80px); /* 高度设置为剩余的视口高度，避免与固定的navbar重叠 */
+}
+
+
