@@ -22,9 +22,11 @@ body {
 
 .navbar {
   top: 0;
-  position: fixed;
+  position: relative;
+  height: 30%; 
   width: 100%;
-  background: linear-gradient(90deg, rgba(102, 153, 104, 0.8), rgba(185, 204, 187, 0.8));
+  
+  background: linear-gradient(90deg, rgba(65, 97, 66, 0.8), rgba(185, 204, 187, 0.8));
   color: white;
   padding: 15px 20px;
   display: flex;
@@ -36,14 +38,14 @@ body {
 
 .navbar .title h1 {
   margin: 0;
-  font-size: 200px;
+  font-size: 10.0rem; /* 调整标题大小以适应比例 */
   font-weight: 600;
   font-family: 'Comic Sans MS', cursive, sans-serif;
 }
 
 .navbar nav a{
   margin: 0;
-  font-size: 40px;
+  font-size: 1.5rem; /* 调整标题大小以适应比例 */
   font-weight: 600;
   text-decoration: none;
   color: white; /* 设置字体颜色为白色 */
@@ -59,17 +61,92 @@ body {
   padding: 0 10px;
 }
 
-/* 确保地图区域显示在navbar下方 */
-.map-section {
+/* 主内容区域 */
+.mainpart {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
   flex: 1;
-  position: relative;
-  margin-top: 300px; /* 调整为与navbar的高度匹配，避免遮挡 */
-  padding-top: 20px; /* 可以增加一些内边距来确保地图内容不与边界紧贴 */
+  overflow: auto;
+  background: linear-gradient(90deg, rgba(65, 97, 66, 0.8), rgba(185, 204, 187, 0.8));
 }
 
-.map-section #map-container {
-  width: 100%;
-  height: calc(100vh - 80px); /* 高度设置为剩余的视口高度，避免与固定的navbar重叠 */
+/* 主内容容器，包含 Map 和图片区域 */
+.content-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 90%; /* 内容容器的高度与视口同步 */
+  margin: auto; /* 居中布局 */
+  width: 95%; /* 占据页面的 95% 宽度 */
+}
+
+/* Map 容器样式 */
+.map-container {
+  height: 90%; /* 设置高度占比 */
+  width: 40%; /* 宽度占40% */
+  border: 2px solid white;
+  border-radius: 10px;
+  overflow: hidden;
+  background-color: #e5e5e5; /* 地图容器的背景色 */
+}
+
+/* 分隔线样式 */
+.divider {
+  width: 2px;
+  background-color: #ccc;
+  height: 90%; /* 和内容容器对齐 */
 }
 
 
+/* 图片区域样式 */
+.image-section {
+  width: 40%; /* 与地图容器一致 */
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* 每组图片之间的间距 */
+  height: 90%;
+  padding: 10px;
+  
+}
+
+.image-group {
+  flex-direction: row;
+  display: flex;
+  align-items: center; /* 使标题和图片垂直居中对齐 */
+  gap: 20px; /* 标题和图片之间的间距 */
+}
+
+.image-group h2 {
+  font-size: 1.5rem;
+  color: #333;
+  margin: 0;
+  flex-shrink: 0; /* 确保标题不会被压缩 */
+  width: 30%;
+  text-align: right; /* 让标题右对齐 */
+}
+
+.image-group .image-row {
+  display: flex;
+  gap: 20px; /* 设置图片之间的间距 */
+}
+
+.image-group .image-item {
+  width: 400px; /* 固定宽度 */
+  height: 140px; /* 固定高度 */
+  object-fit: contain; /* 缩放图片以适应容器并保持比例 */
+  max-width: 100%; /* 确保图片宽度不会超过容器 */
+  max-height: 100%; /* 确保图片高度不会超过容器 */
+  border: 5px solid transparent; /* 透明边框 */
+  background-image: linear-gradient(45deg, #ff6ec7, #ffcc00); /* 渐变颜色 */
+  background-origin: border-box; /* 使渐变显示在边框上 */
+  background-clip: content-box; /* 使渐变在内容框内显示 */
+  
+  overflow: hidden; /* 确保没有滚动条 */
+  margin: 5px; /* 图片间距 */
+}
+
+.image-item:hover {
+  transform: scale(1.2); /* 悬停效果 */
+  box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* 添加光晕效果 */
+}

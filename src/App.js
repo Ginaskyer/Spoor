@@ -27,10 +27,47 @@ function App() {
           </a>
         </nav>
       </header>
-      <main>
-        <section id="map" className="map-section">
-          <MapComponent />
-        </section>
+      <main className="mainpart">
+        <div className="content-container">
+          <section id="map" className="map-container">
+            <MapComponent />
+          </section>
+          <div className="divider"></div>
+          {/* New Image Section */}
+          <section id="images" className="image-section">
+            <div className="image-group">
+              <h2>Personal Diary</h2>
+              <div className="image-row">
+                <img
+                  src="/Southeast_Univeristy.jpg"
+                  alt="Nature 1"
+                  className="image-item"
+                />
+                <img
+                  src="/NYC.jpg"
+                  alt="Nature 2"
+                  className="image-item"
+                />
+              </div>
+            </div>
+            <div className="image-group">
+              <h2>Next Destination</h2>
+              <div className="image-row">
+                <img
+                  src="/Paris.jpg"
+                  alt="Nature 1"
+                  className="image-item"
+                />
+                <img
+                  src="/LA.webp"
+                  alt="Nature 2"
+                  className="image-item"
+                />
+              </div>
+            </div>
+          </section>
+          
+        </div>
       </main>
     </div>
   );
