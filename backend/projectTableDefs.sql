@@ -31,10 +31,10 @@ CREATE TABLE Article(
 
 CREATE TABLE Visited (
     userID INT NOT NULL,
-    cityID INT NOT NULL,
-    PRIMARY KEY (userID, CityID),
+    locationID INT NOT NULL,
+    PRIMARY KEY (userID, locationID),
     FOREIGN KEY (userID) REFERENCES User(userID),
-    FOREIGN KEY (cityID) REFERENCES City(cityID)
+    FOREIGN KEY (locationID) REFERENCES Locations(locationID)
 );
 
 
@@ -68,7 +68,7 @@ INSERT INTO Article (locationID, userID, content) VALUES
 (4, 1, 'Big Ben is an iconic landmark of London.');
 
 -- 插入用户访问的城市数据
-INSERT INTO Visited (userID, cityID) VALUES
+INSERT INTO Visited (userID, locationID) VALUES
 (1, 1), -- Alice visited New York
 (2, 2), -- Bob visited Paris
 (3, 3), -- Charlie visited Tokyo
