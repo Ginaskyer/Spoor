@@ -4,7 +4,7 @@ import "./App.css"; // 样式文件
 
 // import { Link } from "react-router-dom"; // 你可以选择使用路由来导航页面
 
-const MainPage = () => {
+const MainPage = ({userId}) => {
   return (
     <div className="app">
       <header className="navbar">
@@ -14,6 +14,9 @@ const MainPage = () => {
           </h1>
         </div>
         <nav>
+          <a>
+            {userId}
+          </a>
           <a href="#map">
             <i className="fas fa-map-marked-alt"></i> Map
           </a>
@@ -30,7 +33,7 @@ const MainPage = () => {
       <main className="mainpart">
         <div className="content-container">
           <section id="map" className="map-container">
-            <MapComponent />
+            <MapComponent userId={userId}/>
           </section>
           <div className="divider"></div>
           <section id="images" className="image-section">

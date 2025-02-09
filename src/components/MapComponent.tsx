@@ -4,7 +4,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 // import config from "../config"; // Import the config file
 
-const MapComponent = () => {
+const MapComponent = ({userId}) => {
   useEffect(() => {
     const map = L.map("map").setView([0, 0], 2);
 
@@ -15,7 +15,7 @@ const MapComponent = () => {
 
     // 1. 获取用户1访问过的地点，并标注到地图上
     axios
-      .get("http://localhost:5000/api/getMapLoc", { params: { userID: 1 } }) // 传递 userID = 1
+      .get("http://localhost:5000/api/getMapLoc", { params: { userID: userId } }) // 传递 userID = 1
       .then((response) => {
         const locations = response.data.location;
 
@@ -67,7 +67,6 @@ const MapComponent = () => {
       }
     });
 
-    // 2. 组件销毁时，清理事件监听
     return () => {
       map.off("click");
       map.remove();

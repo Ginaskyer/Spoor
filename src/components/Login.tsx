@@ -1,17 +1,33 @@
 import React, { useState } from "react";
 import Swal from "sweetalert2";
+import axios from "axios";
 import "./LoginPage.css"; // 引入外部样式文件
 
 const LoginPage = ({ onLoginSuccess }) => {
   const handleLogin = (username, password) => {
     // todo
-    if (username === "Skyer_L-AU2024@outlook.com" && password === "1qaz2wsx") {
-      onLoginSuccess(); 
-    } else {
-      Swal.fire("Error", "Invalid username or password", "error"); // fail
-    }
+    axios
+    .post('http://localhost:5000/api/Login',
+      {
+        user: username,
+        key: password
+      },
+      {
+        headers: { "Content-Type": "application/json" }
+      }
+    )
+    .then((response) => {
+      const result = response.data.result;
+      const userID = response.data.userID;
+      if (result) {
+        onLoginSuccess(userID); 
+      } else {
+        Swal.fire("Error", "Invalid username or password", "error"); // fail
+      }
+    })
+    
   };
-
+  
   return (
     <div className="login-page">
       <div className="login-container">
