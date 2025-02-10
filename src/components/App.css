@@ -151,6 +151,12 @@ body {
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* 添加光晕效果 */
 }
 
+.app h2{
+  color: #f5f3f3;
+  size: 20px;
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
 .diary-page {
   padding: 20px;
   text-align: center;
@@ -178,7 +184,7 @@ body {
 }
 
 .diary-card button {
-  background: #007bff;
+  background:rgba(140, 155, 141, 0.8);
   color: white;
   border: none;
   padding: 8px 12px;

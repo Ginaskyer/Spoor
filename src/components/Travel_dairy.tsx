@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useLocation } from "react-router-dom";
 import "./App.css"; // 样式文件
+import MapComponent from "./MapComponent.tsx";
 
 const Diary = () => {
     const navigate = useNavigate();
@@ -55,22 +56,32 @@ const Diary = () => {
           </header>
           
           <main className="mainpart">
-            <h2>Travel Diary</h2>
-            {diaryEntries.length === 0 ? (
-              <p>No diary entries found.</p>
-            ) : (
-              <div className="diary-list">
-                {diaryEntries.map((entry, index) => (
-                  <div key={index} className="diary-card">
-                    <h3>📍 {entry.description}</h3>
-                    <p><strong>Latitude:</strong> {entry.lat}</p>
-                    <p><strong>Longitude:</strong> {entry.lng}</p>
-                    <button onClick={() => openMap(entry.lat, entry.lng)}>View on Map</button>
-                  </div>
-                ))}
-              </div>
-            )}
+            <div className="content-container">
+              <section id="map" className="map-container">
+                <MapComponent userId={userId} />
+              </section>
+              <div className="divider"></div>
+              <section id="images" className="image-section">
+              <h2>Travel Diary</h2>
+              {diaryEntries.length === 0 ? (
+                <p>No diary entries found.</p>
+              ) : (
+                <div className="diary-list">
+                  {diaryEntries.map((entry, index) => (
+                    <div key={index} className="diary-card">
+                      <h3>📍 {entry.description}</h3>
+                      <p><strong>Latitude:</strong> {entry.lat}</p>
+                      <p><strong>Longitude:</strong> {entry.lng}</p>
+                      <button onClick={() => openMap(entry.lat, entry.lng)}>View on Map</button>
+                    </div>
+                  ))}
+                </div>
+              )}
+                
+              </section>
+            </div>
           </main>
+
         </div>
     );
 };
