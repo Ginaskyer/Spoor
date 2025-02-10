@@ -31,3 +31,29 @@ def check_user():
         result = False
         return jsonify({"error": "Missing userID"}), 400
     
+# 注册
+@login_bp.route("/SignUp", methods=["POST"])
+def sign_up():
+    data = request.get_json()
+    username = data.get("user")
+    password = data.get("key")
+
+    connection = get_db_connection()
+    cursor = connection.cursor()
+
+    # 检查用户名是否已存在
+    cursor.execute("SELECT userID FROM User WHERE userName = %s", (username,))
+    existing_user = cursor.fetchone()
+    if existing_user:
+        cursor.close()
+        connection.close()
+        return jsonify({"success": False, "message": "Username already exists"}), 400
+
+    # 插入新用户
+    cursor.execute("INSERT INTO User (userName, password) VALUES (%s, %s)", (username, password))
+    connection.commit()
+    cursor.close()
+    connection.close()
+
+    return jsonify({"success": True})
+

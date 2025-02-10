@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "antd": "^5.23.4",
     "axios": "^1.7.9",
     "cra-template": "1.2.0",
     "leaflet": "^1.9.4",
@@ -10,6 +11,7 @@
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-leaflet": "^5.0.0",
+    "react-router-dom": "^7.1.5",
     "react-scripts": "5.0.1",
     "sweetalert2": "^11.15.10",
     "web-vitals": "^4.2.4"

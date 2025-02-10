@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import L from "leaflet";
 import axios from "axios";
 import Swal from "sweetalert2";
+
 // import config from "../config"; // Import the config file
 
 const MapComponent = ({userId}) => {
@@ -13,7 +14,6 @@ const MapComponent = ({userId}) => {
       attribution: "© OpenStreetMap contributors",
     }).addTo(map);
 
-    // 1. 获取用户1访问过的地点，并标注到地图上
     axios
       .get("http://localhost:5000/api/getMapLoc", { params: { userID: userId } }) // 传递 userID = 1
       .then((response) => {

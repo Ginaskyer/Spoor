@@ -150,3 +150,43 @@ body {
   transform: scale(1.2); /* 悬停效果 */
   box-shadow: 0 0 25px rgba(255, 255, 255, 0.6); /* 添加光晕效果 */
 }
+
+.diary-page {
+  padding: 20px;
+  text-align: center;
+}
+
+.diary-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center;
+}
+
+.diary-card {
+  border: 1px solid #ddd;
+  padding: 15px;
+  border-radius: 8px;
+  width: 250px;
+  background: #f9f9f9;
+  box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+.diary-card h2 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.diary-card button {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.diary-card button:hover {
+  background: #0056b3;
+}

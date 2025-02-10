@@ -1,10 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
 import MapComponent from "./MapComponent.tsx";
 import "./App.css"; // 样式文件
+import { useNavigate, useLocation } from "react-router-dom";
+import axios from "axios";
+import Diary from "./Travel_dairy.tsx";
 
-// import { Link } from "react-router-dom"; // 你可以选择使用路由来导航页面
+const MainPage = () => {
+  const location = useLocation();
+  const { isLoggedIn, userId } = location.state || {}; // 防止 state 为空时报错
+  const navigate = useNavigate();
 
-const MainPage = ({userId}) => {
+  useEffect(() => {
+    if (userId == null){
+      navigate("/");
+    }
+  }, [navigate, userId]);
+
+  const openTravelDiary = () => {
+    navigate("/Diary", { 
+      state: { isLoggedIn: true, userId: userId } 
+    });
+  };
+
   return (
     <div className="app">
       <header className="navbar">
@@ -14,14 +31,19 @@ const MainPage = ({userId}) => {
           </h1>
         </div>
         <nav>
-          <a>
-            {userId}
-          </a>
+          <a>User_id: {userId}</a>
+          <span>|</span>
           <a href="#map">
             <i className="fas fa-map-marked-alt"></i> Map
           </a>
           <span>|</span>
-          <a href="#logs">
+          {/* <button onClick={openTravelDiary} className="nav-link">
+            <i className="fas fa-book"></i> Travel Diary
+          </button> */}
+          <a onClick={(e) => { 
+                e.preventDefault(); 
+                openTravelDiary(); 
+              }}>
             <i className="fas fa-book"></i> Travel Diary
           </a>
           <span>|</span>
@@ -33,7 +55,7 @@ const MainPage = ({userId}) => {
       <main className="mainpart">
         <div className="content-container">
           <section id="map" className="map-container">
-            <MapComponent userId={userId}/>
+            <MapComponent userId={userId} />
           </section>
           <div className="divider"></div>
           <section id="images" className="image-section">
@@ -45,26 +67,14 @@ const MainPage = ({userId}) => {
                   alt="Nature 1"
                   className="image-item"
                 />
-                <img
-                  src="/NYC.jpg"
-                  alt="Nature 2"
-                  className="image-item"
-                />
+                <img src="/NYC.jpg" alt="Nature 2" className="image-item" />
               </div>
             </div>
             <div className="image-group">
               <h2>Next Destination</h2>
               <div className="image-row">
-                <img
-                  src="/Paris.jpg"
-                  alt="Nature 1"
-                  className="image-item"
-                />
-                <img
-                  src="/LA.webp"
-                  alt="Nature 2"
-                  className="image-item"
-                />
+                <img src="/Paris.jpg" alt="Nature 1" className="image-item" />
+                <img src="/LA.webp" alt="Nature 2" className="image-item" />
               </div>
             </div>
           </section>
